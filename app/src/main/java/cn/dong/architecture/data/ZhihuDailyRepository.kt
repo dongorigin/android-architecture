@@ -25,6 +25,8 @@ object ZhihuDailyRepository {
         zhihuDailyService = retrofit.create(ZhihuDailyService::class.java)
     }
 
+    fun getLatest() = zhihuDailyService.getLatestNews()
+
     fun getStories(date: String): Flowable<List<Story>> {
         return zhihuDailyService.getNews(date)
                 .map { it.stories }

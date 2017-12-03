@@ -42,6 +42,8 @@ dependencies {
     implementation deps.lifecycle.streams
     kapt deps.lifecycle.compiler
 
+    implementation deps.paging
+
     // RxJava
     implementation deps.rxjava2
     implementation deps.rxandroid
@@ -68,6 +70,7 @@ dependencies {
     implementation deps.stetho.okhttp3
 
     implementation deps.timber
+    implementation deps.three_ten_bp
 
     // Dependencies for local unit tests
     testImplementation deps.junit
