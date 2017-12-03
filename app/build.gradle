@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        applicationId "cn.dong.architecture"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
+    implementation deps.kotlin.stdlib
+
+    // Support libraries
+    implementation deps.support.app_compat
+    implementation deps.support.design
+    implementation deps.support.recyclerview
+    implementation deps.support.cardview
+    implementation deps.constraint_layout
+
+    // Architecture components
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.streams
+    kapt deps.lifecycle.compiler
+
+    // RxJava
+    implementation deps.rxjava2
+    implementation deps.rxandroid
+
+    // Dagger
+    implementation deps.dagger.runtime
+    kapt deps.dagger.compiler
+
+    // Retrofit
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2
+    implementation deps.retrofit.mock
+
+    // OkHttp
+    implementation deps.okhttp.runtime
+    implementation deps.okhttp.logging
+
+    implementation deps.glide.runtime
+    implementation deps.glide.okhttp3
+    kapt deps.glide.compiler
+
+    implementation deps.stetho.lib
+    implementation deps.stetho.okhttp3
+
+    implementation deps.timber
+
+    // Dependencies for local unit tests
+    testImplementation deps.junit
+
+    // Dependencies for Android unit tests
+    androidTestImplementation deps.atsl.runner
+}
