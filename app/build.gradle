@@ -44,7 +44,7 @@ dependencies {
     implementation deps.lifecycle.runtime
     implementation deps.lifecycle.extensions
     implementation deps.lifecycle.streams
-    kapt deps.lifecycle.compiler
+    implementation deps.lifecycle.java8
 
     implementation deps.paging
 

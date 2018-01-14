@@ -1,6 +1,7 @@
 package cn.dong.architecture.data
 
 import cn.dong.architecture.data.model.Story
+import cn.dong.architecture.data.model.StoryDetail
 import cn.dong.architecture.data.net.OkHttpManager
 import cn.dong.architecture.data.net.ZhihuDailyService
 import io.reactivex.Flowable
@@ -30,5 +31,9 @@ object ZhihuDailyRepository {
     fun getStories(date: String): Flowable<List<Story>> {
         return zhihuDailyService.getNews(date)
                 .map { it.stories }
+    }
+
+    fun getStoryDetail(id: Int): Flowable<StoryDetail> {
+        return zhihuDailyService.getStory(id)
     }
 }
